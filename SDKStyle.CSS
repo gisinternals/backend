@@ -1,0 +1,129 @@
+/* Style Sheet Last updated - 9/5/2005 */ 
+/* This style sheet is for IE 4.02 and up */ 
+
+
+/* BODY = default paragraph font */ 
+	body
+{
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    background-color: #CCFFFF;
+}
+	
+/* TABLES */ 
+	
+	table
+{
+    border-color: #9999FF;
+    border-style: solid;
+    margin-top: 1em;
+    margin-bottom: 0em;
+    background-color: #FFFFCC;
+}
+
+	th
+{
+    padding: 2px 8px 2px 8px;
+    text-align: left;
+    background: #CCCCCC;
+    margin: .25em;
+    vertical-align: bottom;
+    font-family: Arial;
+    color: #000066;
+    font-weight: bold;
+}
+	
+	tr
+{
+    border: thin solid #000000;
+    vertical-align: top;
+}
+
+	td
+{
+    border: thin solid #C0C0C0;
+    padding: 2px 8px 2px 8px;
+    font-size: 80%;
+    margin: 0em;
+    vertical-align: middle;
+}
+
+td.title
+{
+    font-weight: bold;
+    color: #000000;
+}
+
+.topictitle
+{
+    font-family: Arial;
+    font-weight: bold;
+    font-size: large;
+    color: #800000;
+}
+	
+.header
+{
+    color: #003366;
+    font-family: 'Arial';
+    font-size: 18pt;
+    font-weight: bold;
+}
+hr {color: #003355;}
+/* Heading styles---------------------------------------------------------------------------- */ 
+
+	h1		{font-size: 125%; margin-top: .4em; margin-bottom: .5em;}
+	h2
+{
+    font-size: medium;
+    color: #000099;
+    margin-top: 30px;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+	h3
+{
+    font-size: 100%;
+    margin-top: 1.2em;
+    margin-bottom: .5em;
+    font-weight: bold;
+    color: #009933;
+}
+
+
+p
+{
+    font-family: Arial;
+}
+
+div.sample
+{
+    border-width: thin;
+    border-style: solid;
+    padding: 5px;
+    background-color: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: small;
+    color: #000000;
+    font-style: normal;
+}
+
+span.filename
+{
+    font-style: italic;
+    color: #FF0000;
+}
+
+.menuitem
+{
+    font-size: 100%;
+    font-weight: bold;
+    color: #009933;
+}
+
+.note
+{
+	color: red;
+	font-weight: normal;
+}
