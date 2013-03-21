@@ -8,7 +8,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-public partial class PackageInfo : System.Web.UI.Page
+public partial class MSAutotest : System.Web.UI.Page
 {
     string sdkRoot = "C:\\Inetpub\\wwwroot\\sdk\\";
 
@@ -55,6 +55,8 @@ public partial class PackageInfo : System.Web.UI.Page
                 // parsing the autotest results
                 lines = File.ReadAllLines(resultfile);
                 string autotest_dir = lines[0].Substring(4);
+                if (!autotest_dir.Contains("E:\\builds"))
+                    autotest_dir = lines[2].Substring(4);
                 string testdir = "";
                 string mapfile = "";
                 string mapfilepath = "";
