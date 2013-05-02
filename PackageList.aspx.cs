@@ -44,10 +44,13 @@ public partial class PackageInfo : System.Web.UI.Page
             return "Installer for the GDAL ECW plugin (must be installed to the same directory as the GDAL core)";
 
         if (Regex.Match(file.Name, @"gdal-.*-oracle\.msi", RegexOptions.IgnoreCase).Success)
-            return "Installer for the GDAL Oracle plugin (must be installed to the same directory as the GDAL core)";
+            return "Installer for the GDAL Oracle plugin (must be installed to the same directory as the GDAL core, make sure the proper version of oci.dll is available on your system)";
 
         if (Regex.Match(file.Name, @"gdal-.*-mrsid\.msi", RegexOptions.IgnoreCase).Success)
             return "Installer for the GDAL MrSID plugin (must be installed to the same directory as the GDAL core)";
+
+        if (Regex.Match(file.Name, @"gdal-.*-filegdb\.msi", RegexOptions.IgnoreCase).Success)
+            return "Installer for the OGR FileGDB plugin (must be installed to the same directory as the GDAL core)";
 
         if (Regex.Match(file.Name, @"GDAL-.*py.*\.(exe|msi)", RegexOptions.IgnoreCase).Success)
             return "Installer for the GDAL python bindings (requires to install the GDAL core)";

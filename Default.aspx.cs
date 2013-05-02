@@ -91,12 +91,12 @@ public partial class _Default : System.Web.UI.Page
     {
         StringBuilder s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
         AppendTableHtml(s, "development", "dev", "gdal-mapserver");
-        AppendTableHtml(s, "stable", "stable-1.9-6-2", "gdal-1-9-mapserver-6-2");
+        AppendTableHtml(s, "stable", "stable-1.10-6-2", "gdal-1-10-mapserver-6-2");
         s.Append("</table>");
         binariesDiv.InnerHtml = s.ToString();
 
         s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
-        AppendTableHtml(s, "release", "released-1.9-6-2", "gdal-1-9-2-mapserver-6-2-0");
+        AppendTableHtml(s, "release", "released-1.10-6-2", "gdal-1-10-0-mapserver-6-2-1");
         s.Append("</table>");
         releasesDiv.InnerHtml = s.ToString();
 
@@ -107,6 +107,7 @@ public partial class _Default : System.Web.UI.Page
 
 
         s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.9-6-2", "gdal-1-9-2-mapserver-6-2-0");
         AppendTableHtml(s, "release", "released-1.9-6-0", "gdal-1-9-1-mapserver-6-0-3");
         AppendTableHtml(s, "release", "released-1.9-6-0", "gdal-1-9-0-mapserver-6-0-1");
         AppendTableHtml(s, "release", "released-1.8-6-0", "gdal-1-8-1-mapserver-6-0-1");
