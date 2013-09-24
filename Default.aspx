@@ -32,6 +32,8 @@ Only the binaries of the latest successful builds are available to download. The
         build system can be posted to the</span> <b>
         <a href="https://github.com/gisinternals/buildsystem/issues/new">github issue 
         tracker</a></b>.</p>
+        
+ 
 
 <h2>The following binary only packages are compiled daily based on 
 the MapServer and GDAL SVN (development and stable branches):</h2>
