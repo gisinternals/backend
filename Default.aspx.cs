@@ -73,6 +73,19 @@ public partial class _Default : System.Web.UI.Page
         s.Append("</tr>"); 
     }
 
+    private void AppendTableHtmlCurrent(StringBuilder s, string postfix, string id, string version)
+    {
+        AppendTableRow(s, "MSVC2005 (Win32) -" + postfix, "release-1400-" + version + ".zip", "vc8-" + id);
+        AppendTableRow(s, "MSVC2005 (Win64) -" + postfix, "release-1400-x64-" + version + ".zip", "vc8x64-" + id);
+        AppendTableRow(s, "MSVC2008 (Win32) -" + postfix, "release-1500-" + version + ".zip", "vc9-" + id);
+        AppendTableRow(s, "MSVC2008 (Win64) -" + postfix, "release-1500-x64-" + version + ".zip", "vc9x64-" + id);
+        if (File.Exists(sdkRoot + "\\downloads\\release-1600-" + version + ".zip"))
+        {
+            AppendTableRow(s, "MSVC2010 (Win32) -" + postfix, "release-1600-" + version + ".zip", "vc10-" + id);
+            AppendTableRow(s, "MSVC2010 (Win64) -" + postfix, "release-1600-x64-" + version + ".zip", "vc10x64-" + id);
+        }
+    }
+
     private void AppendTableHtml(StringBuilder s, string postfix, string id, string version)
     {
         AppendTableRow(s, "MSVC2003 (Win32) -" + postfix, "release-1310-" + version + ".zip", "vc7-" + id);
@@ -90,8 +103,8 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         StringBuilder s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
-        AppendTableHtml(s, "development", "dev", "gdal-mapserver");
-        AppendTableHtml(s, "stable", "stable-1.10-6-4", "gdal-1-10-mapserver-6-4");
+        AppendTableHtmlCurrent(s, "development", "dev", "gdal-mapserver");
+        AppendTableHtmlCurrent(s, "stable", "stable-1.10-6-4", "gdal-1-10-mapserver-6-4");
         s.Append("</table>");
         binariesDiv.InnerHtml = s.ToString();
 
@@ -101,7 +114,7 @@ public partial class _Default : System.Web.UI.Page
         releasesDiv.InnerHtml = s.ToString();
 
         s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
-        AppendTableHtml(s, "sdk", "sdk", "dev");
+        AppendTableHtmlCurrent(s, "sdk", "sdk", "dev");
         s.Append("</table>");
         sdkDiv.InnerHtml = s.ToString();
 
