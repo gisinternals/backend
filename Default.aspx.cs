@@ -79,25 +79,19 @@ public partial class _Default : System.Web.UI.Page
         AppendTableRow(s, "MSVC2005 (Win64) -" + postfix, "release-1400-x64-" + version + ".zip", "vc8x64-" + id);
         AppendTableRow(s, "MSVC2008 (Win32) -" + postfix, "release-1500-" + version + ".zip", "vc9-" + id);
         AppendTableRow(s, "MSVC2008 (Win64) -" + postfix, "release-1500-x64-" + version + ".zip", "vc9x64-" + id);
-        if (File.Exists(sdkRoot + "\\downloads\\release-1600-" + version + ".zip"))
-        {
-            AppendTableRow(s, "MSVC2010 (Win32) -" + postfix, "release-1600-" + version + ".zip", "vc10-" + id);
-            AppendTableRow(s, "MSVC2010 (Win64) -" + postfix, "release-1600-x64-" + version + ".zip", "vc10x64-" + id);
-        }
+        AppendTableRow(s, "MSVC2010 (Win32) -" + postfix, "release-1600-" + version + ".zip", "vc10-" + id);
+        AppendTableRow(s, "MSVC2010 (Win64) -" + postfix, "release-1600-x64-" + version + ".zip", "vc10x64-" + id);
     }
 
     private void AppendTableHtml(StringBuilder s, string postfix, string id, string version)
     {
-        AppendTableRow(s, "MSVC2003 (Win32) -" + postfix, "release-1310-" + version + ".zip", "vc7-" + id);
+        //AppendTableRow(s, "MSVC2003 (Win32) -" + postfix, "release-1310-" + version + ".zip", "vc7-" + id);
         AppendTableRow(s, "MSVC2005 (Win32) -" + postfix, "release-1400-" + version + ".zip", "vc8-" + id);
         AppendTableRow(s, "MSVC2005 (Win64) -" + postfix, "release-1400-x64-" + version + ".zip", "vc8x64-" + id);
         AppendTableRow(s, "MSVC2008 (Win32) -" + postfix, "release-1500-" + version + ".zip", "vc9-" + id);
         AppendTableRow(s, "MSVC2008 (Win64) -" + postfix, "release-1500-x64-" + version + ".zip", "vc9x64-" + id);
-        if (File.Exists(sdkRoot + "\\downloads\\release-1600-" + version + ".zip"))
-        {
-            AppendTableRow(s, "MSVC2010 (Win32) -" + postfix, "release-1600-" + version + ".zip", "vc10-" + id);
-            AppendTableRow(s, "MSVC2010 (Win64) -" + postfix, "release-1600-x64-" + version + ".zip", "vc10x64-" + id);
-        }
+        AppendTableRow(s, "MSVC2010 (Win32) -" + postfix, "release-1600-" + version + ".zip", "vc10-" + id);
+        AppendTableRow(s, "MSVC2010 (Win64) -" + postfix, "release-1600-x64-" + version + ".zip", "vc10x64-" + id);
     }
     
     protected void Page_Load(object sender, EventArgs e)
@@ -109,7 +103,7 @@ public partial class _Default : System.Web.UI.Page
         binariesDiv.InnerHtml = s.ToString();
 
         s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
-        AppendTableHtml(s, "release", "released-1.10-6-4", "gdal-1-10-1-mapserver-6-4-0");
+        AppendTableHtml(s, "release", "released-1.10-6-4", "gdal-1-10-1-mapserver-6-4-1");
         s.Append("</table>");
         releasesDiv.InnerHtml = s.ToString();
 
@@ -120,6 +114,7 @@ public partial class _Default : System.Web.UI.Page
 
 
         s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.10-6-4", "gdal-1-10-1-mapserver-6-4-0");
         AppendTableHtml(s, "release", "released-1.10-6-2", "gdal-1-10-0-mapserver-6-2-1");
         AppendTableHtml(s, "release", "released-1.9-6-2", "gdal-1-9-2-mapserver-6-2-0");
         AppendTableHtml(s, "release", "released-1.9-6-0", "gdal-1-9-1-mapserver-6-0-3");
