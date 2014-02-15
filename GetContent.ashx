@@ -123,7 +123,6 @@ public class GetContent : IHttpHandler {
 
     private void AppendTableHtml(StringBuilder s, string postfix, string id, string version)
     {
-        AppendTableRow(s, "MSVC2003 (Win32)", "release-1310-" + version + ".zip", "vc7-" + id);
         AppendTableRow(s, "MSVC2005 (Win32)", "release-1400-" + version + ".zip", "vc8-" + id);
         AppendTableRow(s, "MSVC2005 (Win64)", "release-1400-x64-" + version + ".zip", "vc8x64-" + id);
         AppendTableRow(s, "MSVC2008 (Win32)", "release-1500-" + version + ".zip", "vc9-" + id);
@@ -160,6 +159,65 @@ public class GetContent : IHttpHandler {
         s = new StringBuilder("<h2><a href=\"sdk.html\">Development Kits</a></h2>");
         s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th></tr>");
         AppendTableHtml(s, "sdk", "sdk", "dev");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+    }
+
+    private void ProcessArchive(HttpContext context)
+    {
+        context.Response.Write("<h1>Archive versions</h1>");
+
+        StringBuilder s = new StringBuilder("<h2>gdal-1-10-1-mapserver-6-4-0</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.10-6-4", "gdal-1-10-1-mapserver-6-4-0");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-10-0-mapserver-6-2-1</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.10-6-2", "gdal-1-10-0-mapserver-6-2-1");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-9-2-mapserver-6-2-0</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.9-6-2", "gdal-1-9-2-mapserver-6-2-0");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-9-1-mapserver-6-0-3/h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.9-6-0", "gdal-1-9-1-mapserver-6-0-3");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-9-0-mapserver-6-0-1</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.9-6-0", "gdal-1-9-0-mapserver-6-0-1");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-8-1-mapserver-6-0-1</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.8-6-0", "gdal-1-8-1-mapserver-6-0-1");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-8-0-mapserver-6-0-0</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.8-6-0", "gdal-1-8-0-mapserver-6-0-0");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-8-0-mapserver-5-6-6</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.8-5-6", "gdal-1-8-0-mapserver-5-6-6");
+        s.Append("</table>");
+        context.Response.Write(s.ToString());
+
+        s = new StringBuilder("<h2>gdal-1-7-3-mapserver-5-6-5</h2>");
+        s.Append("<table><tr><th>Compiler (Platform)</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
+        AppendTableHtml(s, "release", "released-1.7-5-6", "gdal-1-7-3-mapserver-5-6-5");
         s.Append("</table>");
         context.Response.Write(s.ToString());
     }
@@ -265,17 +323,27 @@ public class GetContent : IHttpHandler {
 
         if (File.Exists(file))
         {
-            using (System.IO.FileStream s = System.IO.File.OpenRead(file))
+            string[] sections = File.ReadAllText(file).Split(new string[] { "<hr/>" }, StringSplitOptions.None);
+            for (int i = 1; i <= 30; i++)
             {
-                using (System.IO.StreamReader reader = new System.IO.StreamReader(s))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        context.Response.Write(line/*.Replace("http://www.gisinternals.com/sdk/", "query.html?content=text&file=")*/);
-                    }
-                }
+                if (i > sections.Length)
+                    break;
+                context.Response.Write(sections[sections.Length - i].Replace("\r\n", ""));
+                context.Response.Write("<hr/>");
             }
+            
+            
+            //using (System.IO.FileStream s = System.IO.File.OpenRead(file))
+            //{
+            //    using (System.IO.StreamReader reader = new System.IO.StreamReader(s))
+            //    {
+            //        string line;
+            //        while ((line = reader.ReadLine()) != null)
+            //        {
+            //            context.Response.Write(line/*.Replace("http://www.gisinternals.com/sdk/", "query.html?content=text&file=")*/);
+            //        }
+            //    }
+            //}
         }
         else
             context.Response.Write("The specified file doesn't exists!");
@@ -630,6 +698,10 @@ public class GetContent : IHttpHandler {
 
             case "status":
                 ProcessBuildStatus(context);
+                break;
+
+            case "archive":
+                ProcessArchive(context);
                 break;
 
             case "text":

@@ -73,6 +73,21 @@ public partial class _Default : System.Web.UI.Page
         s.Append("</tr>"); 
     }
 
+    private void AppendTableRowOsgeo4w(StringBuilder s, string title, string downloadlink, string logid)
+    {
+        s.Append("<tr>");
+        s.Append("<td class=\"title\"><a target=\"_blank\" href=\"" + downloadlink + "\">" + title + "</a></td>");
+        s.Append("<td>");
+        if (File.Exists(sdkRoot + "build-output\\" + logid + ".html"))
+            s.Append("<a href=\"BuildLog.aspx?id=" + logid + "\">buildlog</a>");
+        s.Append("</td>");
+        s.Append("<td>");
+        if (File.Exists(sdkRoot + "build-output\\status-" + logid + ".html"))
+            s.Append(File.ReadAllText(sdkRoot + "build-output\\status-" + logid + ".html"));
+        s.Append("</td>");
+        s.Append("</tr>");
+    }
+
     private void AppendTableHtmlCurrent(StringBuilder s, string postfix, string id, string version)
     {
         AppendTableRow(s, "MSVC2005 (Win32) -" + postfix, "release-1400-" + version + ".zip", "vc8-" + id);
@@ -112,6 +127,21 @@ public partial class _Default : System.Web.UI.Page
         s.Append("</table>");
         sdkDiv.InnerHtml = s.ToString();
 
+        s = new StringBuilder("<table><tr><th>Package</th><th>Build log</th><th>Build status</th></tr>");
+        AppendTableRowOsgeo4w(s, "mapserver (x86)", "http://download.osgeo.org/osgeo4w/x86/release/mapserver/mapserver/", "vc10-osgeo4w-release");
+        AppendTableRowOsgeo4w(s, "mapserver-dev (x86)", "http://download.osgeo.org/osgeo4w/x86/release/mapserver/mapserver-dev/", "vc10-osgeo4w-dev");
+        AppendTableRowOsgeo4w(s, "mapserver-stable-dev (x86)", "http://download.osgeo.org/osgeo4w/x86/release/mapserver/mapserver-stable-dev/", "vc10-osgeo4w-stable-dev");
+        AppendTableRowOsgeo4w(s, "mapserver (x64)", "http://download.osgeo.org/osgeo4w/x86_64/release/mapserver/mapserver/", "vc10x64-osgeo4w-release");
+        AppendTableRowOsgeo4w(s, "mapserver-dev (x64)", "http://download.osgeo.org/osgeo4w/x86_64/release/mapserver/mapserver-dev/", "vc10x64-osgeo4w-dev");
+        AppendTableRowOsgeo4w(s, "mapserver-stable-dev (x64)", "http://download.osgeo.org/osgeo4w/x86_64/release/mapserver/mapserver-stable-dev/", "vc10x64-osgeo4w-stable-dev");
+        s.Append("</table>");
+        osgeo4wDiv.InnerHtml = s.ToString();
+
+        s = new StringBuilder("<table><tr><th>Package</th><th>Build log</th><th>Build status</th></tr>");
+        AppendTableRowOsgeo4w(s, "MapManager (MapServer release)", "PackageList.aspx?file=release-1600-gdal-1-10-1-mapserver-6-4-1.zip", "vc10-mapmanager-release");
+        AppendTableRowOsgeo4w(s, "MapManager (MapServer stable-dev)", "PackageList.aspx?file=release-1600-gdal-1-10-mapserver-6-4.zip", "vc10-mapmanager-stable-dev");
+        s.Append("</table>");
+        mapmanagerDiv.InnerHtml = s.ToString();
 
         s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
         AppendTableHtml(s, "release", "released-1.10-6-4", "gdal-1-10-1-mapserver-6-4-0");

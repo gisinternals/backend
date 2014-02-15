@@ -54,6 +54,16 @@ packages. The supported versions of the libraries can be found in the /doc
 subdirectory
 </p>
 
+<h2>
+Build status of the osgeo4w packages (built with VS2010):</h2>
+
+<div id="osgeo4wDiv" runat="server"></div>
+
+<h2>
+Build status of the MapManager packages (built with VS2010):</h2>
+
+<div id="mapmanagerDiv" runat="server"></div>
+
 <h2>Older releases (not compiled regularly):</h2>
 
 <div id="olderDiv" runat="server"></div>

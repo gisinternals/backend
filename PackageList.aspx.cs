@@ -40,6 +40,9 @@ public partial class PackageInfo : System.Web.UI.Page
         if (Regex.Match(file.Name, @"gdal-.*-core\.msi", RegexOptions.IgnoreCase).Success)
             return "Generic installer for the GDAL core components";
 
+        if (Regex.Match(file.Name, @"MapManager.*\.msi", RegexOptions.IgnoreCase).Success)
+            return "Installer for the <a href=\"http://www.gisinternals.com/MapManager\">MapServer MapManager</a> application. The installer doesn't contains the ECW, Oracle, MrSID and FileGDB plugins, which should be installed by using the GDAL plugin msi installers.";
+
         if (Regex.Match(file.Name, @"gdal-.*-ecw\.msi", RegexOptions.IgnoreCase).Success)
             return "Installer for the GDAL ECW plugin (must be installed to the same directory as the GDAL core)";
 
