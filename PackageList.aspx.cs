@@ -60,6 +60,9 @@ public partial class PackageInfo : System.Web.UI.Page
 
         if (Regex.Match(file.Name, @"MapScript-.*py.*\.(exe|msi)", RegexOptions.IgnoreCase).Success)
             return "Installer for the MapScript python bindings (Not yet working)";
+
+        if (Regex.Match(file.Name, @"mapserver.*\.msi", RegexOptions.IgnoreCase).Success)
+            return "MapServer installer with IIS registration support, including GDAL. The plugin installers can be used to install further drivers. When registering with IIS, the IIS6 management compatibility option should be installed in the IIS7+ web servers.";
         
         return "";
     }
