@@ -118,7 +118,7 @@ public partial class _Default : System.Web.UI.Page
         binariesDiv.InnerHtml = s.ToString();
 
         s = new StringBuilder("<table><tr><th>Compiler (Platform)</th><th>Downloads</th><th>Package Info</th><th>Build log</th><th>Build status</th><th>Latest revision</th></tr>");
-        AppendTableHtml(s, "release", "released-1.11-6-4", "gdal-1-11-0-mapserver-6-4-1");
+        AppendTableHtml(s, "release", "released-1.11-6-4", "gdal-1-11-1-mapserver-6-4-1");
         s.Append("</table>");
         releasesDiv.InnerHtml = s.ToString();
 
